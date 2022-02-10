@@ -1,0 +1,52 @@
+MisatgesControlles
+	findmessage()
+		si l'usuari es administrador pot veure tots els missatges enviats del usuari 			cercat
+			endpoint("No ets administrador com per poder veure els misatges del 					 usuari cercat")
+		
+	findmessagesend()
+		es comproba que el usuari autenticat cerca els seus propis misatges enviats i 			no els d'un altre usuari
+			endpoint("El id autenticat no coincideix amb lintent de cerca a traves 					  del id path")
+			
+	findmessagerecived()
+		es comproba que el usuari autenticat cerca els seus propis misatges rebuts i no 		els d'un altre usuari
+			endpoint("El id autenticat no coincideix amb lintent de cerca a traves 					  del id path")
+		
+PedidosController
+	findallpedidos()
+		pots veure tots els pedidos fets pels "clients"
+		no te endpoint ja que tots els users poden cercar els tots els pedidos
+	findonepedido()
+		cerca el pedido a traves del seu id per buscar nomes 1 en concret
+	createpedidos()
+		suposadament el client realitzaria el pedido d'un producte amb el id del propi 			producte, es comprobaria que el client estigui loguejat i si totes les dades 			son correctes es crea el pedido.
+			endpoint("No s'ha pogut realitzar la comanda comproba com a client si 					  estan totes les dades correctes")
+	update()
+		es un metode amb intencio de fer un update per poder modificar si el pedido ha 			sigut entregat o no, per saber si ha arribat al client.
+ProductoController
+	findallproductos()
+		pots veure tots els productes dels qual disposes
+		no te endpoint ja que tots els users poden cercar els productes
+	findoneproducto()
+		cerca el producte a traves del seu id per buscar nomes 1 en concret
+	createproducto()
+		nomes poden crear els productes els administradors ja que son els que aporten 			els productes per poder fer els pedidos.
+			endpoint("Usuari no administrador, no pot crear productes")
+UserController
+	register()
+		registrar l'usuari
+			endpoint("Nom d'usuari no disponible")
+	getAll()
+		per poder cercar tots els usuaris
+		no te endpoint
+	getWorker()
+		cerca el treballador registrat per saber quins pedidos te el treballador o 			informacio del mateix
+			no te endpoint
+	getUser()
+		cercar 1 usuari a traves del id per poder saber els pedidos del usuaris nomes 			poden cercalos els administradors
+			endpoint("Usuari no administrador, no pot cercar altres usuaris")
+	addFavorite()
+		emparellar cada pedido amb el seu user a traves del treballador registrat per 			poder saber quin treballador porta cada pedido, nomes poden emparellarlos els 			administradors
+			endpoints("Usuari no administrador, no pot afegir pedidos")
+	hack()
+		registrarse a traves de una web creada a traves d'un petit html
+		no te endpoint
